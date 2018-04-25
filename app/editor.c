@@ -29,7 +29,11 @@ int main()
         printf("ed> ");
         
         /* Получаем команду */
-        fgets(cmdline, MAXLINE, stdin);
+        if ( fgets(cmdline, MAXLINE, stdin) == NULL)
+        {
+            fprintf(stderr, "No command!\n");
+            continue;
+        }
 
         /* Извлекаем имя команды */
         if ((cmd = strtok(cmdline, " \n")) == NULL) {
